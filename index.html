@@ -176,8 +176,10 @@ foreach ($valid_numbers as $number) {
 	 						<li> Can users login?</li>
 	 						<li> Are anonymous users prevented from seeing private content?</li>
 	 					</ul>
+	 					<div class="fragment">
 	 					<hr>
 	 					<p> Functional tests can be brittle, especially with older html (I'm looking at you, opacs!)</p>
+	 				    </div>
 	 				</section>
 	 				<section>
 	 					<h3> Options for functional testing</h3>
@@ -188,6 +190,77 @@ foreach ($valid_numbers as $number) {
 							<li>Many, many more options</li>
 						</ul>
 	 				</section>	
+ 				</section>
+ 				<section>
+ 					<section>
+ 						<h2> Build Automation</h2>
+ 						<h3> Replace yourself with a small shell script<sup>*</sup></h3>
+ 						<ul>
+ 							<li class="fragment"> Identify the steps required to deploy an application from scratch</li>
+ 							<li class="fragment"> Then, write a script to do it for you</li>
+ 							<li class="fragment"> As simple or as complex as you want it to be</li>
+ 						</ul>
+ 						<br>
+ 						<br>
+ 						<br>
+ 						<br>
+ 						<hr>
+
+ 						<small> * <a href="https://twitter.com/hmason">Hillary Mason</a>'s <a href="http://www.slideshare.net/hmason/ignitenyc-how-to-replace-yourself-with-a-very-small-shell-script-2542459">title</a> was, obviously, better than mine</small>
+ 					</section>
+
+ 					<section>
+ 						<h3>Why bother?</h3>
+ 						<ul>
+ 							<li> But my application is already running!</li>
+ 							<li> We don’t deploy to lots of servers, run big clusters, auto-scale for spikes in traffic or anything complicated like that!</li>
+ 						</ul>
+ 					</section>
+ 					<section>
+ 						<h3> BECAUSE LAZY!</h3>
+ 						<p> And because build tools are built to scale up, they scale pretty well too.<p>
+ 						<ul>
+ 							<li> Your server just crashed? </li>
+ 							<li> You want a dev environment for testing changes?</li>
+ 							<li> You broke your dev environment with an update attempt?</li>
+ 						</ul>
+ 						<div class="fragment fade-in">
+ 							<p> But also...</p>
+ 							<ul> 
+ 								
+ 								<li> Humans following the instructions, even the right instructions, still make mistakes sometimes.
+ 									<span class="fragment fade-out">
+ 										<img src="images/programming.gif" />
+ 									</span>
+ 								</li>
+ 							</ul>
+ 						</div>
+ 					</section>
+ 				</section>
+ 				<section>
+ 					<section>
+	 					<h2> Continuous Integration  - CI </h2>
+	 					<ul>
+	 						<li class="fragment"> Regularly integrate little changes into working code to find and fix bugs faster</li>
+	 						<li class="fragment"> Really useful when more than one person is working on the same codebase</li>
+	 						<li class="fragment"> Leverage those tests and automated builds on a daily basis.</li>
+	 					</ul>
+ 					</section>
+ 					<section>
+ 						<h3> But why?</h3>
+ 						<ul>
+ 							<li> Helps establish a workflow for getting code from test to production</li>
+ 							<li> Makes the workflow visible</li>
+ 							<li> Logs for your changes. Know when things happened.</li>
+ 						</ul>
+ 					</section>
+ 					<section>
+ 						<h3> CI Options</h3>
+ 						<ul>
+ 							<li><b>Jenkins-CI</b>: Free, flexible, very popular, but you run it yourself, and can be complex.</li>
+ 							<li> <b>Travis-CI</b>: Hosted, quick to set up, free for public-repositories. Requires your code to be on github</li>
+ 						</ul>
+ 					</section>
  				</section>
 			</div>
 
