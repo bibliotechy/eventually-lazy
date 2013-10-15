@@ -66,22 +66,14 @@
 				</section>
 				
 				<section>
-					<h2> Test your code</h2>
-					<h3 class="fragment"> Unit Testing</h3>
-					<h3 class="fragment"> Functional Testing</h3>
-				</section>
-				
-				<section>
 					<section>
-					    <h2> Unit Testing</h2>
+						<h2>Testing your code</h2>
+					    <h3> Unit Testing</h3>
 					    <ul>
 					    	<li class="fragment"> Validates that your code does what it is supposed to do</li>
 					    	<li class="fragment"> Encourages you to write small, reusable code chunks</li>
 					    	<li class="fragment"> Explicitly states your assumptions about what it does</li>
-					    	<li class="fragment"> Can help you plan your code before you write it</li>
-					    	
-				    </section>
-
+					</section>
 					<section>
 						<h2> Unit testing: an example</h2>
 						<h3 class="fragment">Is it actually a phone number?</h3>
@@ -94,7 +86,6 @@
 								<li> 4 digits </li>
 							</ul>
 						</div>
-						
 					</section>
 					<section>
 						<h3> A solution </h3>
@@ -133,15 +124,6 @@ foreach ($valid_numbers as $number) {
 							<li class="fragment"> A baseline for when things change</li>
 					</section>
 					<section>
-						<h3>Test Driven Development</h3>
-						<p class="fragment"> Write a failing test, then make it pass.</p>
-						<div class="fragment fade-in">
-							<span class="fragment fade-out"><img src="images/side-eye-prince.gif"></span>
-						    <p> Think about and plan each line of code before you write it</p>
-						</div>
-
-					</section>
-					<section>
 						<h3> Unit Testing Drawbacks</h3>
 						<ul>
 							<li> Slows down development initially</li>
@@ -150,37 +132,6 @@ foreach ($valid_numbers as $number) {
 						</ul>
 					</section>
 				</section>
-
-				<section>
-					<section>
-	 					<h2> Functional Testing</h2>
-	 					<ul>
-	 						<li class="fragment"> Testing user interaction</li>
-	 					</ul>
-	 				</section>
-
-	 				<section>
-	 					<h3> Great for sanity checks like: </h3>
-	 					<ul>
-	 						<li> Do the important forms work? Are they validating input?</li>
-	 						<li> Do the important links work?</li>
-	 						<li> Can users login?</li>
-	 						<li> Are anonymous users prevented from seeing private content?</li>
-	 					</ul>
-	 				</section>
-	 				<section>
-	 					<h3> And...<span class="fragment">you get to be lazy!</span></h3>
-	 					<p class="fragment"> Instead of doing this by hand, go get another cup of coffee. You deserve it</p>
-	 				</section>
-	 				<section>
-	 					<h3> Options for functional testing</h3>
-	 					<ul>
-	 						<li><b>Selenium</b> : Cross Browser testing, for realz! But, lots of set up. FF lets you record tests to run later on many browsers. </li>
-							<li><b>CasperJS</b>: Webkit only, local, fast, easy to write. Won't catch cross browser issues, but will help you realize a change would prevent users from logging in!</li>
-							<li>Many, many more options</li>
-						</ul>
-	 				</section>	
- 				</section>
  				<section>
  					<section>
  						<h2> Build Automation</h2>
