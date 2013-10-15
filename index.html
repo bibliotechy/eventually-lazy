@@ -182,6 +182,10 @@ foreach ($valid_numbers as $number) {
 	 				    </div>
 	 				</section>
 	 				<section>
+	 					<h3> And<span class="fragment">...</span><span class="fragment">you get to be lazy!</span></h3>
+	 					<p class="fragment"> Go get another cup of coffee. You deserve it</p>
+	 				</section>
+	 				<section>
 	 					<h3> Options for functional testing</h3>
 	 					<ul>
 	 						<li><b>Selenium</b> : Cross Browser testing, for realz! But, lots of set up. FF lets you record tests to run later on many browsers. </li>
@@ -196,7 +200,7 @@ foreach ($valid_numbers as $number) {
  						<h2> Build Automation</h2>
  						<h3> Replace yourself with a small shell script<sup>*</sup></h3>
  						<ul>
- 							<li class="fragment"> Identify the steps required to deploy an application from scratch</li>
+ 							<li class="fragment"> Identify the steps to get an application up and running </li>
  							<li class="fragment"> Then, write a script to do it for you</li>
  							<li class="fragment"> As simple or as complex as you want it to be</li>
  						</ul>
@@ -218,7 +222,7 @@ foreach ($valid_numbers as $number) {
  					</section>
  					<section>
  						<h3> BECAUSE LAZY!</h3>
- 						<p> And because build tools are built to scale up, they scale pretty well too.<p>
+ 						<p> Build tools scale up, but they scale down too<p>
  						<ul>
  							<li> Your server just crashed? </li>
  							<li> You want a dev environment for testing changes?</li>
@@ -236,6 +240,21 @@ foreach ($valid_numbers as $number) {
  							</ul>
  						</div>
  					</section>
+ 					<section>
+ 						<h3> Automating Pain Points</h3>
+ 						<ul>
+ 							<li class="fragment" data-fragment-index="2"> Database dependent configuration can be tough </li>
+ 							<li class="fragment" data-fragment-index="3"> Securing username / passwords can be tricky</li>
+ 						</ul>
+ 						<div class="fragment fade-out" data-fragment-index="1">
+ 							<img src="images/fight-club.gif" height="200">
+ 							<img src="images/self-hit.gif" height="200" />
+ 							<img src="images/self-slap.gif" height="200" />
+ 						</div>
+
+ 					</section>
+ 					<section>
+ 					</section>
  				</section>
  				<section>
  					<section>
@@ -250,8 +269,10 @@ foreach ($valid_numbers as $number) {
  						<h3> But why?</h3>
  						<ul>
  							<li> Helps establish a workflow for getting code from test to production</li>
- 							<li> Makes the workflow visible</li>
- 							<li> Logs for your changes. Know when things happened.</li>
+ 							<li> Simplifies following the workflow</li>
+ 							<li> Makes the workflow and changes visible</li>
+ 							<li class="fragment"> Set up once, it does the lazy making work for you</li>
+ 							<li class="fragment"> CI = lazy<sup><small>lazy</small></sup></li>
  						</ul>
  					</section>
  					<section>
