@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Eventually Lazy</h1>
+					<h3>A few modern development practices to help you relax...eventually</h3>
+					<p>
+                      <small>
+                      	by Chad Nelson  / <a href="http://twitter.com/bibliotechy">@bibliotechy</a><br />
+                        Developer at <a href="http://www.jenkinslaw.org">Jenkins Law Library</a>
+                      </small>
+					</p>
+				</section>
+        
+                <section>
+                	<section>
+						<h2> How do I get on this lazy gravy train?</h2>
+						<p class="fragment grow"> Writing tests for your code</p>
+						<p class="fragment grow"> Automate builds and deployment</p>
+						<p class="fragment grow"> Continuous integration</p>
+				    </section>
+				    <section>
+				    	<h2> ╯°□°）╯︵ ┻━┻ </h2>
+				    	<br>
+				    	<h3> But, that sounds like a lot of work</h3>
+				    	<p class="fragment"> Upfront, it is.</p> 
+				    	<p class="fragment"> Down the road, pure lazy-making.</p>
+
+				    </section>
+				    <section>
+				    	<h2> Evidence based argument</h2>
+				    	<img src="images/laziness-chart.png" title="Laziness Chart" alt="Laziness Chart">
+				    </section>
+				</section>
+				
+				<section>
+					<h2> Test your code</h2>
+					<h3 class="fragment"> Unit Testing</h3>
+					<h3 class="fragment"> Functional Testing</h3>
+				</section>
+				
+				<section>
+					<section>
+					    <h2> Unit Testing</h2>
+					    <ul>
+					    	<li class="fragment"> Validates that your code does what it is supposed to do</li>
+					    	<li class="fragment"> Explicitly states your assumptions about what it does</li>
+					    	<li class="fragment"> Can help you plan your code before you write it</li>
+					    	<li class="fragment"> Encourages you to write small, reusable code chunks</li>
+				    </section>
+					<section>
+						<img src="images/vader-test.jpg" title="Unit Test all the things" alt="Unit Test all the things">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2> Unit testing: an example</h2>
+						<h3 class="fragment">Is it actually a phone number?</h3>
+						<div class="fragment">
+							<ul>
+								<li> 3 digits of area code, optionally surrounded by parenthesis </li>
+								<li> optional separator character (space or - or .) </li>
+								<li> 3 digits </li>
+								<li> optional separator character (space or - or .) </li>
+								<li> 4 digits </li>
+							</ul>
+						</div>
+						
+					</section>
+					<section>
+						<h3> A solution </h3>
+						<pre><code>
+function verify_is_phone_number($number) {
+  $regex = '/^\(?(\d{3})\)?[\s-.]?(\d{3})[\s-.]?(\d{4})$/';
+  preg_match($regex, $number, $matches);
+  return $matches;
+}
+						</code></pre>
+						<p> But how do you know it works?</p>
+					</section>
+					<section>
+						<h3> A test</h3>
+						<pre><code>
+$valid_numbers = array(
+  '1234567890',
+  '(123)4567890',
+  '(123) 4567890',
+  '(123) 456 7890',
+  '(123)-456-7890',
+  '123 456 7890',
+  '123-456-7890',
+  '123.456.7890',);
+
+foreach ($valid_numbers as $number) {
+  $message = "{$number} is not a valid number";
+  $this->assertTrue(phone_number_regex_match($number), $message);
+}
+						</code></pre>
+					</section>
+					<section>
+						<h3> Some other benefits</h3>
+						<ul>
+							<li class="fragment"> A document of what how your code works <br> (Don't have to decipher the regex each time)</li>
+							<li class="fragment"> A baseline for when things change</li>
+					</section>
+					<section>
+						<h3>Test Driven Development</h3>
+						<p class="fragment"> Write a failing test, then make it pass.</p>
+						<div class="fragment fade-in">
+							<span class="fragment fade-out"><img src="images/side-eye-prince.gif"></span>
+						    <p> Think about and plan each line of code before you write it</p>
+						</div>
+
+					</section>
+					<section>
+						<h3> Unit Testing Drawbacks</h3>
+						<ul>
+							<li> Initially, it slows down development</li>
+							<li> Hard to add testing to existing applications</li>
+							<li> If you write the tests, your tests have the same blind spots as your code</li> 
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+	 					<h2> Functional Testing</h2>
+	 					<ul>
+	 						<li class="fragment"> Testing that the user interface does what you expect</li>
+	 						<li class="fragment"> Testing user interaction</li>
+	 					</ul>
+	 				</section>
+
+	 				<section>
+	 					<h3> Great for sanity checks like: </h3>
+	 					<ul>
+	 						<li> Do the important forms work? Are they validating input?</li>
+	 						<li> Do the important links work?</li>
+	 						<li> Can users login?</li>
+	 						<li> Are anonymous users prevented from seeing private content?</li>
+	 					</ul>
+	 					<div class="fragment">
+	 					<hr>
+	 					<p> Functional tests can be brittle, especially with older html (I'm looking at you, opacs!)</p>
+	 				    </div>
+	 				</section>
+	 				<section>
+	 					<h3> And<span class="fragment">...</span><span class="fragment">you get to be lazy!</span></h3>
+	 					<p class="fragment"> Go get another cup of coffee. You deserve it</p>
+	 				</section>
+	 				<section>
+	 					<h3> Options for functional testing</h3>
+	 					<ul>
+	 						<li><b>Selenium</b> : Cross Browser testing, for realz! But, lots of set up. FF lets you record tests to run later on many browsers. </li>
+							<li><b>CasperJS</b>: Webkit only, local, fast, easy to write. Won't catch cross browser issues, but will help you realize a change would prevent users from logging in!</li>
+							<li><b>Testling + Browserling</b> - Cross browser Javascript testing as a service - Write javascript, test every browser. But, you gotta pay to run the tests. Useful if you are doing lots of complex JS, like client side MVC.</li>
+							<li>Many, many more options</li>
+						</ul>
+	 				</section>	
+ 				</section>
+ 				<section>
+ 					<section>
+ 						<h2> Build Automation</h2>
+ 						<h3> Replace yourself with a small shell script<sup>*</sup></h3>
+ 						<ul>
+ 							<li class="fragment"> Identify the steps to get an application up and running </li>
+ 							<li class="fragment"> Then, write a script to do it for you</li>
+ 							<li class="fragment"> As simple or as complex as you want it to be</li>
+ 						</ul>
+ 						<br>
+ 						<br>
+ 						<br>
+ 						<br>
+ 						<hr>
+
+ 						<small> * <a href="https://twitter.com/hmason">Hillary Mason</a>'s <a href="http://www.slideshare.net/hmason/ignitenyc-how-to-replace-yourself-with-a-very-small-shell-script-2542459">title</a> was, obviously, better than mine</small>
+ 					</section>
+
+ 					<section>
+ 						<h3>Why bother?</h3>
+ 						<ul>
+ 							<li> But my application is already running!</li>
+ 							<li> We don’t deploy to lots of servers, run big clusters, auto-scale for spikes in traffic or anything complicated like that!</li>
+ 						</ul>
+ 					</section>
+ 					<section>
+ 						<h3> BECAUSE LAZY!</h3>
+ 						<p> Build tools scale up, but they scale down too<p>
+ 						<ul>
+ 							<li> Your server just crashed? </li>
+ 							<li> You want a dev environment for testing changes?</li>
+ 							<li> You broke your dev environment with an update attempt?</li>
+ 						</ul>
+ 						<div class="fragment fade-in">
+ 							<p> But also...</p>
+ 							<ul> 
+ 								
+ 								<li> Humans following the instructions, even the right instructions, still make mistakes sometimes.
+ 									<span class="fragment fade-out">
+ 										<img src="images/programming.gif" />
+ 									</span>
+ 								</li>
+ 							</ul>
+ 						</div>
+ 					</section>
+ 					<section>
+ 						<h3> Automating Pain Points</h3>
+ 						<ul>
+ 							<li class="fragment" data-fragment-index="2"> Database dependent configuration can be tough </li>
+ 							<li class="fragment" data-fragment-index="3"> Securing username / passwords can be tricky</li>
+ 						</ul>
+ 						<div class="fragment fade-out" data-fragment-index="1">
+ 							<img src="images/fight-club.gif" height="200">
+ 							<img src="images/self-hit.gif" height="200" />
+ 							<img src="images/self-slap.gif" height="200" />
+ 						</div>
+
+ 					</section>
+ 					<section>
+ 					</section>
+ 				</section>
+ 				<section>
+ 					<section>
+	 					<h2> Continuous Integration  - CI </h2>
+	 					<ul>
+	 						<li class="fragment"> Regularly integrate little changes into working code to find and fix bugs faster</li>
+	 						<li class="fragment"> Really useful when more than one person is working on the same codebase</li>
+	 						<li class="fragment"> Leverage those tests and automated builds on a daily basis.</li>
+	 					</ul>
+ 					</section>
+ 					<section>
+ 						<h3> But why?</h3>
+ 						<ul>
+ 							<li> Helps establish a workflow for getting code from test to production</li>
+ 							<li> Simplifies following the workflow</li>
+ 							<li> Makes the workflow and changes visible</li>
+ 							<li class="fragment"> Set up once, it does the lazy making work for you</li>
+ 							<li class="fragment"> CI = lazy<sup><small>lazy</small></sup></li>
+ 						</ul>
+ 					</section>
+ 					<section>
+ 						<h3> CI Options</h3>
+ 						<ul>
+ 							<li><b>Jenkins-CI</b>: Free, flexible, very popular, but you run it yourself, and can be complex.</li>
+ 							<li> <b>Travis-CI</b>: Hosted, quick to set up, free for public-repositories. Requires your code to be on github</li>
+ 						</ul>
+ 					</section>
+ 				</section>
+ 				<section>
+ 					<h2> That's all I got!</h2>
+ 					<p> Talk available at <a href="http://github.com/bibliotechy/so-lazy">github.com/bibliotechy/so-lazy</a></p>
+ 					<p> Questions? Hit me up <a href="http://twitter.com/bibliotechy">@bibliotechy</a></p>
+ 				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
