@@ -63,10 +63,6 @@
 				    	<p class="fragment"> Down the road, pure lazy-making.</p>
 
 				    </section>
-				    <section>
-				    	<h2> Evidence based argument</h2>
-				    	<img src="images/laziness-chart.png" title="Laziness Chart" alt="Laziness Chart">
-				    </section>
 				</section>
 				
 				<section>
@@ -80,16 +76,12 @@
 					    <h2> Unit Testing</h2>
 					    <ul>
 					    	<li class="fragment"> Validates that your code does what it is supposed to do</li>
+					    	<li class="fragment"> Encourages you to write small, reusable code chunks</li>
 					    	<li class="fragment"> Explicitly states your assumptions about what it does</li>
 					    	<li class="fragment"> Can help you plan your code before you write it</li>
-					    	<li class="fragment"> Encourages you to write small, reusable code chunks</li>
+					    	
 				    </section>
-					<section>
-						<img src="images/vader-test.jpg" title="Unit Test all the things" alt="Unit Test all the things">
-					</section>
-				</section>
 
-				<section>
 					<section>
 						<h2> Unit testing: an example</h2>
 						<h3 class="fragment">Is it actually a phone number?</h3>
@@ -152,7 +144,7 @@ foreach ($valid_numbers as $number) {
 					<section>
 						<h3> Unit Testing Drawbacks</h3>
 						<ul>
-							<li> Initially, it slows down development</li>
+							<li> Slows down development initially</li>
 							<li> Hard to add testing to existing applications</li>
 							<li> If you write the tests, your tests have the same blind spots as your code</li> 
 						</ul>
@@ -163,7 +155,6 @@ foreach ($valid_numbers as $number) {
 					<section>
 	 					<h2> Functional Testing</h2>
 	 					<ul>
-	 						<li class="fragment"> Testing that the user interface does what you expect</li>
 	 						<li class="fragment"> Testing user interaction</li>
 	 					</ul>
 	 				</section>
@@ -176,21 +167,16 @@ foreach ($valid_numbers as $number) {
 	 						<li> Can users login?</li>
 	 						<li> Are anonymous users prevented from seeing private content?</li>
 	 					</ul>
-	 					<div class="fragment">
-	 					<hr>
-	 					<p> Functional tests can be brittle, especially with older html (I'm looking at you, opacs!)</p>
-	 				    </div>
 	 				</section>
 	 				<section>
-	 					<h3> And<span class="fragment">...</span><span class="fragment">you get to be lazy!</span></h3>
-	 					<p class="fragment"> Go get another cup of coffee. You deserve it</p>
+	 					<h3> And...<span class="fragment">you get to be lazy!</span></h3>
+	 					<p class="fragment"> Instead of doing this by hand, go get another cup of coffee. You deserve it</p>
 	 				</section>
 	 				<section>
 	 					<h3> Options for functional testing</h3>
 	 					<ul>
 	 						<li><b>Selenium</b> : Cross Browser testing, for realz! But, lots of set up. FF lets you record tests to run later on many browsers. </li>
 							<li><b>CasperJS</b>: Webkit only, local, fast, easy to write. Won't catch cross browser issues, but will help you realize a change would prevent users from logging in!</li>
-							<li><b>Testling + Browserling</b> - Cross browser Javascript testing as a service - Write javascript, test every browser. But, you gotta pay to run the tests. Useful if you are doing lots of complex JS, like client side MVC.</li>
 							<li>Many, many more options</li>
 						</ul>
 	 				</section>	
@@ -201,7 +187,7 @@ foreach ($valid_numbers as $number) {
  						<h3> Replace yourself with a small shell script<sup>*</sup></h3>
  						<ul>
  							<li class="fragment"> Identify the steps to get an application up and running </li>
- 							<li class="fragment"> Then, write a script to do it for you</li>
+ 							<li class="fragment"> Write a script to do it for you</li>
  							<li class="fragment"> As simple or as complex as you want it to be</li>
  						</ul>
  						<br>
@@ -224,7 +210,6 @@ foreach ($valid_numbers as $number) {
  						<h3> BECAUSE LAZY!</h3>
  						<p> Build tools scale up, but they scale down too<p>
  						<ul>
- 							<li> Your server just crashed? </li>
  							<li> You want a dev environment for testing changes?</li>
  							<li> You broke your dev environment with an update attempt?</li>
  						</ul>
@@ -253,25 +238,23 @@ foreach ($valid_numbers as $number) {
  						</div>
 
  					</section>
- 					<section>
- 					</section>
  				</section>
  				<section>
  					<section>
 	 					<h2> Continuous Integration  - CI </h2>
 	 					<ul>
-	 						<li class="fragment"> Regularly integrate little changes into working code to find and fix bugs faster</li>
-	 						<li class="fragment"> Really useful when more than one person is working on the same codebase</li>
 	 						<li class="fragment"> Leverage those tests and automated builds on a daily basis.</li>
+	 						<li class="fragment"> Regularly integrate little changes into working code to find and fix bugs faster</li>
+	 						<li class="fragment"> Excellent when more than one person is working on the same codebase</li>
+	 						
 	 					</ul>
  					</section>
  					<section>
  						<h3> But why?</h3>
  						<ul>
  							<li> Helps establish a workflow for getting code from test to production</li>
- 							<li> Simplifies following the workflow</li>
  							<li> Makes the workflow and changes visible</li>
- 							<li class="fragment"> Set up once, it does the lazy making work for you</li>
+ 							<li> Simplifies following the workflow by autmating it even more</li>
  							<li class="fragment"> CI = lazy<sup><small>lazy</small></sup></li>
  						</ul>
  					</section>
