@@ -39,7 +39,7 @@
 			<div class="slides">
 				<section>
 					<h1>Eventually Lazy</h1>
-					<h3>A few modern development practices to help you relax...eventually</h3>
+					<h3>A couple of modern development practices to help you relax...eventually</h3>
 					<p>
                       <small>
                       	by Chad Nelson  / <a href="http://twitter.com/bibliotechy">@bibliotechy</a><br />
@@ -52,8 +52,7 @@
                 	<section>
 						<h2> How do I get on this lazy gravy train?</h2>
 						<p class="fragment grow"> Writing tests for your code</p>
-						<p class="fragment grow"> Automate builds and deployment</p>
-						<p class="fragment grow"> Continuous integration</p>
+						<p class="fragment grow"> Automate the build process</p>
 				    </section>
 				    <section>
 				    	<h2> ╯°□°）╯︵ ┻━┻ </h2>
@@ -135,46 +134,52 @@ foreach ($valid_numbers as $number) {
  				<section>
  					<section>
  						<h2> Build Automation</h2>
- 						<h3> Replace yourself with a small shell script<sup>*</sup></h3>
+ 						<p>
+ 							<small> Replace yourself with a small shell script - <a href="https://twitter.com/hmason">Hillary Mason</a> 
+ 							</small>
+ 						</p>
  						<ul>
- 							<li class="fragment"> Identify the steps to get an application up and running </li>
+ 							<li class="fragment"> Identify the steps needed to go from an empty server to a running application</li>
  							<li class="fragment"> Write a script to do it for you</li>
- 							<li class="fragment"> As simple or as complex as you want it to be</li>
  						</ul>
- 						<br>
- 						<br>
- 						<br>
- 						<br>
- 						<hr>
-
- 						<small> * <a href="https://twitter.com/hmason">Hillary Mason</a>'s <a href="http://www.slideshare.net/hmason/ignitenyc-how-to-replace-yourself-with-a-very-small-shell-script-2542459">title</a> was, obviously, better than mine</small>
  					</section>
-
+ 					<section>
+ 						<h2> Build Automation : a simple example</h2>
+ 						<ul> 
+ 							<li> So you want to run Omeka? Follow <a href="http://omeka.org/codex/Install_on_Ubuntu_using_Terminal" target="_blank">the instructions</a></li>
+ 							<li> Everything in the instruction is a shell command</li>
+ 						</ul>
+ 					</section>
+ 					<section>
+ 						<h2> Build Automation  - a simple example</h2>
+ 						<pre><code>
+#!/bin/bash
+apt-get install unzip php5 php5-mysql
+apt-get install apache2 mysql-server
+apt-get install imagemagick
+cd && wget http://omeka.org/files/omeka-2.0.zip
+unzip omeka-2.0.zip
+sudo mv omeka-2.0/* /var/www/
+sudo mv omeka-2.0/.htaccess /var/www/
+...
+sudo /etc/init.d/apache2 restart
+ 						</code></pre>
+ 					<p>Won't just work line for line, but you get the idea</p>
+ 					</section>
  					<section>
  						<h3>Why bother?</h3>
  						<ul>
- 							<li> But my application is already running!</li>
+ 							<li> But my application is already running! Who need to redeploy?</li>
  							<li> We don’t deploy to lots of servers, run big clusters, auto-scale for spikes in traffic or anything complicated like that!</li>
  						</ul>
  					</section>
  					<section>
- 						<h3> BECAUSE LAZY!</h3>
- 						<p> Build tools scale up, but they scale down too<p>
+ 						<h3> Because it lets you be eventually lazy</h3>
  						<ul>
  							<li> You want a dev environment for testing changes?</li>
- 							<li> You broke your dev environment with an update attempt?</li>
- 						</ul>
- 						<div class="fragment fade-in">
- 							<p> But also...</p>
- 							<ul> 
- 								
- 								<li> Humans following the instructions, even the right instructions, still make mistakes sometimes.
- 									<span class="fragment fade-out">
- 										<img src="images/programming.gif" />
- 									</span>
- 								</li>
+ 							<li> You want to try running your application on Amazon Web Services?</li>
+ 							<li class="fragment fade-in"> Humans following the instructions, even the right instructions, still make mistakes sometimes.<span class="fragment fade-out"> <img src="images/programming.gif" /></span></li>
  							</ul>
- 						</div>
  					</section>
  					<section>
  						<h3> Automating Pain Points</h3>
@@ -191,34 +196,11 @@ foreach ($valid_numbers as $number) {
  					</section>
  				</section>
  				<section>
- 					<section>
-	 					<h2> Continuous Integration  - CI </h2>
-	 					<ul>
-	 						<li class="fragment"> Regularly integrate little changes into working code to find and fix bugs faster</li>
-	 						<li class="fragment"> Leverage those tests and automated builds</li>
-	 						<li class="fragment"> Excellent when more than one person is working on the same codebase</li>
-	 						
-	 					</ul>
- 					</section>
- 					<section>
- 						<img src="images/travis.png" />
- 					</section>	
- 					<section>
- 						<h3> But we only have one developer, why CI?</h3>
- 						<ul>
- 							<li> Helps establish a workflow for getting code from test to production</li>
- 							<li> Makes the workflow and changes visible</li>
- 							<li> Simplifies following the workflow by automating it even more</li>
- 							<li class="fragment"> CI = lazy<sup><small>lazy</small></sup></li>
- 						</ul>
- 					</section>
- 					<section>
- 						<h3> CI Options</h3>
- 						<ul>
- 							<li><b>Jenkins-CI</b>: Free, flexible, very popular, but you run it yourself, and can be complex.</li>
- 							<li> <b>Travis-CI</b>: Hosted, quick to set up, free for public-repositories. Requires your code to be on github</li>
- 						</ul>
- 					</section>
+ 					<h2> So remember, if you want to be lazy</h2>
+ 					<ul>
+ 						<li> Write tests for your code; don't test by hand </li>
+ 						<li> Automate building your applications </li>
+ 					</ul>
  				</section>
  				<section>
  					<h2> That's all I got!</h2>
